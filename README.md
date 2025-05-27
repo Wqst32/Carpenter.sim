@@ -26,6 +26,7 @@
         #sidebar {
             width: 300px;
             min-width: 250px;
+            flex-shrink: 0;
             max-width: 400px;
             background: white;
             border-right: 2px solid #ddd;
