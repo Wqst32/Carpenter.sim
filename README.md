@@ -24,12 +24,16 @@
         }
         
         #sidebar {
-            width: 350px;
+            width: 300px;
+            min-width: 250px;
+            max-width: 400px;
             background: white;
             border-right: 2px solid #ddd;
-            padding: 20px;
+            padding: 15px;
             overflow-y: auto;
+            overflow-x: hidden;
             box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            flex-shrink: 0;
         }
         
         #viewport {
@@ -59,26 +63,28 @@
         
         .furniture-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
             margin-bottom: 15px;
         }
         
         .furniture-btn {
-            padding: 10px 6px;
+            padding: 8px 4px;
             border: 2px solid #8B4513;
             background: white;
             cursor: pointer;
-            border-radius: 8px;
-            font-size: 11px;
+            border-radius: 6px;
+            font-size: 10px;
             font-weight: bold;
             color: #8B4513;
             transition: all 0.3s;
             text-align: center;
-            min-height: 45px;
+            min-height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
+            word-wrap: break-word;
+            line-height: 1.2;
         }
         
         .furniture-btn:hover {
@@ -256,7 +262,7 @@
             
             // Renderer
             renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(window.innerWidth - 350, window.innerHeight);
+            renderer.setSize(window.innerWidth - 300, window.innerHeight);
             renderer.shadowMap.enabled = true;
             renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             document.getElementById('viewport').appendChild(renderer.domElement);
@@ -790,9 +796,10 @@
         
         // Resize handler
         window.addEventListener('resize', () => {
-            camera.aspect = (window.innerWidth - 350) / window.innerHeight;
+            const sidebarWidth = document.getElementById('sidebar').offsetWidth;
+            camera.aspect = (window.innerWidth - sidebarWidth) / window.innerHeight;
             camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth - 350, window.innerHeight);
+            renderer.setSize(window.innerWidth - sidebarWidth, window.innerHeight);
         });
         
         // Initialize the application
