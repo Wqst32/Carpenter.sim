@@ -24,7 +24,7 @@
         }
         
         #sidebar {
-            width: 2800px;
+            width: 350px;
             background: white;
             border-right: 2px solid #ddd;
             padding: 20px;
@@ -60,21 +60,25 @@
         .furniture-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 8px;
+            gap: 10px;
             margin-bottom: 15px;
         }
         
         .furniture-btn {
-            padding: 8px 4px;
+            padding: 10px 6px;
             border: 2px solid #8B4513;
             background: white;
             cursor: pointer;
             border-radius: 8px;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: bold;
             color: #8B4513;
             transition: all 0.3s;
             text-align: center;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .furniture-btn:hover {
@@ -252,7 +256,7 @@
             
             // Renderer
             renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(window.innerWidth - 280, window.innerHeight);
+            renderer.setSize(window.innerWidth - 350, window.innerHeight);
             renderer.shadowMap.enabled = true;
             renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             document.getElementById('viewport').appendChild(renderer.domElement);
@@ -786,12 +790,13 @@
         
         // Resize handler
         window.addEventListener('resize', () => {
-            camera.aspect = (window.innerWidth - 280) / window.innerHeight;
+            camera.aspect = (window.innerWidth - 350) / window.innerHeight;
             camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth - 280, window.innerHeight);
+            renderer.setSize(window.innerWidth - 350, window.innerHeight);
         });
         
         // Initialize the application
         init();
     </script>
 </body>
+</html>
